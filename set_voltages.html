@@ -1,0 +1,53 @@
+<script type="text/javascript">
+    RED.nodes.registerType('set_voltages',{
+        category: 'AC Power Module',
+        color: '#CD853F',
+        defaults: {
+            name:{ 
+                value: "" },
+            phase_A:{
+                value:""
+            }
+            phase_B:{
+                value:""
+            }
+            phase_C{
+                value:""
+            },
+
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-bars",
+        label: function() { return this.name || "set_voltages" },
+        paletteLabel: "set_voltages",
+        
+    });
+
+</script>
+
+<script type="text/html" data-template-name="set_voltages">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <br>
+    <div class="form-row">
+        <label for="node-input-phase_A" style="margin-left: 27%"><i class="fa fa-expand"></i> Phase A</>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:32%; margin-left: -40px">
+    </div>
+    <div class="form-row">
+        <label for="node-input-phase_B" style="margin-left: 27%"><i class="fa fa-expand"></i> Phase B</>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:32%; margin-left: -40px">
+    </div>
+    <div class="form-row">
+        <label for="node-input-phase_C" style="margin-left: 27%"><i class="fa fa-expand"></i> Phase C</>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:32%; margin-left: -40px">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="set_voltages">
+    <p>Working on it...</p>
+</script>
+
+

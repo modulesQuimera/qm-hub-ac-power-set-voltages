@@ -1,0 +1,25 @@
+{
+  "name": "qm-hub-ac-power-set-voltages",
+  "version": "1.0.0",
+  "description": "Set Voltages",
+  "main": "set_voltages.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modulesQuimera/qm-hub-ac-power-set-voltages.git"
+  },
+  "keywords": ["quimera","hub","JIG"],
+  "author": "HUB-LSE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/modulesQuimera/qm-hub-ac-power-set-voltages/issues"
+  },
+  "homepage": "https://github.com/modulesQuimera/qm-hub-ac-power-set-voltages#readme",
+  "node-red" : {
+    "nodes": {
+        "set_voltages": "set_voltages.js"
+    }
+  }
+}
