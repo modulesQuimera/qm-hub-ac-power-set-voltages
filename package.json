@@ -1,6 +1,6 @@
 {
   "name": "qm-hub-ac-power-set-voltages",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Set Voltages",
   "main": "set_voltages.js",
   "scripts": {

@@ -5,8 +5,8 @@ module.exports = function(RED) {
     function SetVoltagesNode(config) {
         RED.nodes.createNode(this, config);
         this.phase_A = config.phase_A
-        this.phase_B= config.phase_B;
-        this.phase_C = config.phase_C;
+        this.phase_B= config.phase_B
+        this.phase_C = config.phase_C
         
         var node = this
 

@@ -1,26 +1,26 @@
 <script type="text/javascript">
     RED.nodes.registerType('set_voltages',{
         category: 'AC Power Module',
-        color: '#CD853F',
+        color: '#FA8072',
         defaults: {
             name:{ 
                 value: "" },
             phase_A:{
                 value:""
-            }
+            },
             phase_B:{
                 value:""
-            }
-            phase_C{
+            },
+            phase_C:{
                 value:""
             },
 
         },
         inputs:1,
         outputs:1,
-        icon: "font-awesome/fa-bars",
-        label: function() { return this.name || "set_voltages" },
-        paletteLabel: "set_voltages",
+        icon: "./icons/Set_Voltages.svg",
+        label: function() { return this.name || "Set Voltages" },
+        paletteLabel: "Set Voltages",
         
     });
 
@@ -33,16 +33,16 @@
     </div>
     <br>
     <div class="form-row">
-        <label for="node-input-phase_A" style="margin-left: 27%"><i class="fa fa-expand"></i> Phase A</>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:32%; margin-left: -40px">
+        <label for="node-input-phase_A" style="margin-left: 27%"><i class="fa fa-expand"></i> VA   </>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:32%;">
     </div>
     <div class="form-row">
-        <label for="node-input-phase_B" style="margin-left: 27%"><i class="fa fa-expand"></i> Phase B</>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:32%; margin-left: -40px">
+        <label for="node-input-phase_B" style="margin-left: 27%"><i class="fa fa-expand"></i> VB   </>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:32%;">
     </div>
     <div class="form-row">
-        <label for="node-input-phase_C" style="margin-left: 27%"><i class="fa fa-expand"></i> Phase C</>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:32%; margin-left: -40px">
+        <label for="node-input-phase_C" style="margin-left: 27%"><i class="fa fa-expand"></i> VC    </>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:32%;">
     </div>
 </script>
 
