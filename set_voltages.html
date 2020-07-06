@@ -26,23 +26,81 @@
 
 </script>
 
+
+<style>
+
+
+    label{
+        width: 50% !important;
+        margin-bottom: 2px !important;
+    }
+
+    .columm{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    hr {
+    width: 40% !important;
+    float: left !important;
+    }
+
+    .hr-div-voltages{
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-top: 220px !important;
+    }
+
+    .optional{
+        height: max-content !important;
+        margin-top: 10px !important;
+    }
+
+    .descript{
+        text-align: center;
+    }
+
+</style>
+
 <script type="text/html" data-template-name="set_voltages">
-    <div class="form-row">
+
+    <div class="form-row columm">
+        <strong class="descript">
+           This component makes value assignments for the voltages of each phase.
+        </strong>
+    </div>
+<!-- 
+    <div class="form-row columm">
+        <div class="form-row ">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
-    <br>
-    <div class="form-row">
-        <label for="node-input-phase_A" style="margin-left: 27%"><i class="fa fa-expand"></i> VA   </>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:32%;">
+    <br> -->
+    <div class="form-row columm">
+        <div class="form-row ">
+        <label for="node-input-phase_A"><i class="fa fa-expand"></i> VA   </>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:39%;">
     </div>
-    <div class="form-row">
-        <label for="node-input-phase_B" style="margin-left: 27%"><i class="fa fa-expand"></i> VB   </>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:32%;">
+    <div class="form-row columm">
+        <div class="form-row ">
+        <label for="node-input-phase_B"><i class="fa fa-expand"></i> VB   </>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:39%;">
     </div>
-    <div class="form-row">
-        <label for="node-input-phase_C" style="margin-left: 27%"><i class="fa fa-expand"></i> VC    </>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:32%;">
+    <div class="form-row columm">
+        <div class="form-row ">
+        <label for="node-input-phase_C"><i class="fa fa-expand"></i> VC    </>
+        <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:39%;">
+    </div>
+
+    <div class="hr-div-voltages">
+        <hr>
+        <span class="optional">Optional</span>
+        <hr>
+    </div>
+
+    <div class="form-row columm">
+        <label style="width: 50% !important;" for="node-input-name" ><i class="fa fa-tag"></i> Component Nickname</label>
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>
 
