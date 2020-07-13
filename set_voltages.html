@@ -14,22 +14,26 @@
             phase_C:{
                 value:""
             },
-
+            slot:{value:"", required:true}
         },
         inputs:1,
         outputs:1,
-        icon: "./icons/Set_Voltages.svg",
-        label: "Set Voltages",
+        icon: "Set_Voltages.svg",
+        label: function() { return this.name || "Set Voltages" },
         paletteLabel: "Set Voltages",
-        
-    });
-
+        oneditprepare: function() {
+            $.getJSON('getMapeamentoACPower',function(data) {
+                console.log(data)
+                document.getElementById("VA").innerText = data[0].label;
+                document.getElementById("VB").innerText = data[1].label;
+                document.getElementById("VC").innerText = data[2].label;
+            })
+        },
+    });    
 </script>
 
 
 <style>
-
-
     label{
         width: 50% !important;
         margin-bottom: 2px !important;
@@ -69,27 +73,33 @@
            This component makes value assignments for the voltages of each phase.
         </strong>
     </div>
-<!-- 
     <div class="form-row columm">
-        <div class="form-row ">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <br> -->
-    <div class="form-row columm">
-        <div class="form-row ">
-        <label for="node-input-phase_A"><i class="fa fa-expand"></i> VA   </>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:39%;">
+        <label  for="node-input-slot"><i class="fa fa-sliders"></i> Slot</label>
+        <input type="number" min="0" id="node-input-slot" style="width:20%;">
     </div>
     <div class="form-row columm">
         <div class="form-row ">
-        <label for="node-input-phase_B"><i class="fa fa-expand"></i> VB   </>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:39%;">
+            <div>
+                <label for="node-input-phase_A" id="VA"><i class="fa fa-expand"></i></label>
+            </div>
+            <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:39%;">
+        </div>
     </div>
     <div class="form-row columm">
         <div class="form-row ">
-        <label for="node-input-phase_C"><i class="fa fa-expand"></i> VC    </>
-        <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:39%;">
+            <div>
+                <label for="node-input-phase_B" id="VB"><i class="fa fa-expand"></i></label>
+            </div>
+            <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:39%;">
+        </div>
+    </div>
+    <div class="form-row columm">
+        <div class="form-row ">
+            <div>
+                <label for="node-input-phase_C" id="VC"><i class="fa fa-expand"></i></label>
+            </div>
+            <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:39%;">
+        </div>
     </div>
 
     <div class="hr-div-voltages">
