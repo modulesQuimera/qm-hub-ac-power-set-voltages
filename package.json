@@ -1,5 +1,5 @@
 {
-  "name": "qm-hub-ac-power-set-voltages",
+  "name": "qm-ac-power-set-voltages",
   "version": "1.0.5",
   "description": "Set Voltages",
   "main": "set_voltages.js",
