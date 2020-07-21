@@ -18,8 +18,8 @@
         },
         inputs:1,
         outputs:1,
-        icon: "Set_Voltages.svg",
-        label: function() { return this.name || "Set Voltages" },
+        icon: "AC_Power.svg",
+        label: function() { return this.name? "Set Voltages - " + this.name: "Set Voltages" },
         paletteLabel: "Set Voltages",
         oneditprepare: function() {
             $.getJSON('getMapeamentoACPower',function(data) {
@@ -70,12 +70,12 @@
 
     <div class="form-row columm">
         <strong class="descript">
-           This component makes value assignments for the voltages of each phase.
+            Program the value of the three charges that will be used.
         </strong>
     </div>
     <div class="form-row columm">
         <label  for="node-input-slot"><i class="fa fa-sliders"></i> Slot</label>
-        <input type="number" min="0" id="node-input-slot" style="width:20%;">
+        <input type="number" id="node-input-slot" style="width:20%;">
     </div>
     <div class="form-row columm">
         <div class="form-row ">
@@ -115,7 +115,7 @@
 </script>
 
 <script type="text/html" data-help-name="set_voltages">
-    <p>Working on it...</p>
+    <p>Program the value of the three charges that will be used.</p>
 </script>
 
 
