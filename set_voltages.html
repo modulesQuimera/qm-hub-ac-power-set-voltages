@@ -3,18 +3,36 @@
         category: 'AC Power Module',
         color: '#FA8072',
         defaults: {
-            name:{ 
-                value: "" },
-            phase_A:{
-                value:""
-            },
-            phase_B:{
-                value:""
-            },
-            phase_C:{
-                value:""
-            },
-            slot:{value:"", required:true}
+            name:{ value: "" },
+            slot:{value:"", required:true},
+            phase_A:{value:""},phase_B:{value:""},phase_C:{value:""},
+
+            qtdSetVoltages:{value:0},
+            controle:{value:0},
+            phase_A1:{value:""},phase_B1:{value:""},phase_C1:{value:""},
+            phase_A2:{value:""},phase_B2:{value:""},phase_C2:{value:""},
+            phase_A3:{value:""},phase_B3:{value:""},phase_C3:{value:""},
+            phase_A4:{value:""},phase_B4:{value:""},phase_C4:{value:""},
+            phase_A5:{value:""},phase_B5:{value:""},phase_C5:{value:""},
+            phase_A6:{value:""},phase_B6:{value:""},phase_C6:{value:""},
+            phase_A7:{value:""},phase_B7:{value:""},phase_C7:{value:""},
+            phase_A8:{value:""},phase_B8:{value:""},phase_C8:{value:""},
+            phase_A9:{value:""},phase_B9:{value:""},phase_C9:{value:""},
+            phase_A10:{value:""},phase_B10:{value:""},phase_C10:{value:""},
+            phase_A11:{value:""},phase_B11:{value:""},phase_C11:{value:""},
+            phase_A12:{value:""},phase_B12:{value:""},phase_C12:{value:""},
+            phase_A13:{value:""},phase_B13:{value:""},phase_C13:{value:""},
+            phase_A14:{value:""},phase_B14:{value:""},phase_C14:{value:""},
+            phase_A15:{value:""},phase_B15:{value:""},phase_C15:{value:""},
+            phase_A16:{value:""},phase_B16:{value:""},phase_C16:{value:""},
+            phase_A17:{value:""},phase_B17:{value:""},phase_C17:{value:""},
+            phase_A18:{value:""},phase_B18:{value:""},phase_C18:{value:""},
+            phase_A19:{value:""},phase_B19:{value:""},phase_C19:{value:""},
+            phase_A20:{value:""},phase_B20:{value:""},phase_C20:{value:""},
+            phase_A21:{value:""},phase_B21:{value:""},phase_C21:{value:""},
+            phase_A22:{value:""},phase_B22:{value:""},phase_C22:{value:""},
+            phase_A23:{value:""},phase_B23:{value:""},phase_C23:{value:""},
+            phase_A24:{value:""},phase_B24:{value:""},phase_C24:{value:""},
         },
         inputs:1,
         outputs:1,
@@ -22,26 +40,106 @@
         label: function() { return this.name? "Set Voltages - " + this.name: "Set Voltages" },
         paletteLabel: "Set Voltages",
         oneditprepare: function() {
+            var self = this;
+            self.controle = self.qtdSetVoltages;
+
+            for(var i=1; i<=self.controle; i++){
+                $(".setVoltages"+i).show();
+            }
+            if(!self.controle || self.controle < 0){
+                self.controle = 0;
+            }
+            $("#addSetVoltages").click(function(){
+                self.controle = self.controle+1 <= 24 ? self.controle + 1 : 24;
+
+                $(".setVoltages"+self.controle).show();
+                console.log(self.controle);
+            });
+            $("#remSetVoltages").click(function(){
+                $(".setVoltages"+self.controle).hide();
+                self.controle = self.controle-1 >= 0 ? self.controle - 1 : 0;
+                console.log(self.controle);
+            });
             $.getJSON('getMapeamentoACPower',function(data) {
                 console.log(data)
-                document.getElementById("VA").innerText = data[0].label;
-                document.getElementById("VB").innerText = data[1].label;
-                document.getElementById("VC").innerText = data[2].label;
+                document.getElementById("VA").innerText = data[0].label; document.getElementById("VB").innerText = data[1].label; document.getElementById("VC").innerText = data[2].label;
+                document.getElementById("VA1").innerText = data[0].label; document.getElementById("VB1").innerText = data[1].label; document.getElementById("VC1").innerText = data[2].label;
+                document.getElementById("VA2").innerText = data[0].label; document.getElementById("VB2").innerText = data[1].label; document.getElementById("VC2").innerText = data[2].label;
+                document.getElementById("VA3").innerText = data[0].label; document.getElementById("VB3").innerText = data[1].label; document.getElementById("VC3").innerText = data[2].label;
+                document.getElementById("VA4").innerText = data[0].label; document.getElementById("VB4").innerText = data[1].label; document.getElementById("VC4").innerText = data[2].label;
+                document.getElementById("VA5").innerText = data[0].label; document.getElementById("VB5").innerText = data[1].label; document.getElementById("VC5").innerText = data[2].label;
+                document.getElementById("VA6").innerText = data[0].label; document.getElementById("VB6").innerText = data[1].label; document.getElementById("VC6").innerText = data[2].label;
+                document.getElementById("VA7").innerText = data[0].label; document.getElementById("VB7").innerText = data[1].label; document.getElementById("VC7").innerText = data[2].label;
+                document.getElementById("VA8").innerText = data[0].label; document.getElementById("VB8").innerText = data[1].label; document.getElementById("VC8").innerText = data[2].label;
+                document.getElementById("VA9").innerText = data[0].label; document.getElementById("VB9").innerText = data[1].label; document.getElementById("VC9").innerText = data[2].label;
+                document.getElementById("VA10").innerText = data[0].label; document.getElementById("VB10").innerText = data[1].label; document.getElementById("VC10").innerText = data[2].label;
+                document.getElementById("VA11").innerText = data[0].label; document.getElementById("VB11").innerText = data[1].label; document.getElementById("VC11").innerText = data[2].label;
+                document.getElementById("VA12").innerText = data[0].label; document.getElementById("VB12").innerText = data[1].label; document.getElementById("VC12").innerText = data[2].label;
+                document.getElementById("VA13").innerText = data[0].label; document.getElementById("VB13").innerText = data[1].label; document.getElementById("VC13").innerText = data[2].label;
+                document.getElementById("VA14").innerText = data[0].label; document.getElementById("VB14").innerText = data[1].label; document.getElementById("VC14").innerText = data[2].label;
+                document.getElementById("VA15").innerText = data[0].label; document.getElementById("VB15").innerText = data[1].label; document.getElementById("VC15").innerText = data[2].label;
+                document.getElementById("VA16").innerText = data[0].label; document.getElementById("VB16").innerText = data[1].label; document.getElementById("VC16").innerText = data[2].label;
+                document.getElementById("VA17").innerText = data[0].label; document.getElementById("VB17").innerText = data[1].label; document.getElementById("VC17").innerText = data[2].label;
+                document.getElementById("VA18").innerText = data[0].label; document.getElementById("VB18").innerText = data[1].label; document.getElementById("VC18").innerText = data[2].label;
+                document.getElementById("VA19").innerText = data[0].label; document.getElementById("VB19").innerText = data[1].label; document.getElementById("VC19").innerText = data[2].label;
+                document.getElementById("VA20").innerText = data[0].label; document.getElementById("VB20").innerText = data[1].label; document.getElementById("VC20").innerText = data[2].label;
+                document.getElementById("VA21").innerText = data[0].label; document.getElementById("VB21").innerText = data[1].label; document.getElementById("VC21").innerText = data[2].label;
+                document.getElementById("VA22").innerText = data[0].label; document.getElementById("VB22").innerText = data[1].label; document.getElementById("VC22").innerText = data[2].label;
+                document.getElementById("VA23").innerText = data[0].label; document.getElementById("VB23").innerText = data[1].label; document.getElementById("VC23").innerText = data[2].label;
+                document.getElementById("VA24").innerText = data[0].label; document.getElementById("VB24").innerText = data[1].label; document.getElementById("VC24").innerText = data[2].label;
             })
         },
+        oneditsave: function() {
+            this.qtdSetVoltages = this.controle;
+        }
     });    
 </script>
 
-
 <style>
     label{
-        width: 50% !important;
+        width: 100% !important;
         margin-bottom: 2px !important;
     }
-
     .columm{
         display: flex !important;
         flex-direction: column !important;
+    }
+    hr {
+        width: 40% !important;
+        float: left !important;
+    }
+    .hr-div-voltages{
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+    .optional{
+        height: max-content !important;
+        margin-top: 10px !important;
+    }
+    .descript{
+        text-align: center;
+    }
+
+    .columm-50{
+        display: flex !important;
+        flex-direction: column !important;
+        width: 50% !important;
+        float: left !important;
+    }
+
+    .columm-30{
+        display: flex !important;
+        flex-direction: column !important;
+        width: 30% !important;
+        float: left !important;
+    }
+
+
+    .columm-70{
+        display: flex !important;
+        flex-direction: column !important;
+        width: 70% !important;
+        float: left !important;
     }
 
     hr {
@@ -49,10 +147,10 @@
     float: left !important;
     }
 
-    .hr-div-voltages{
+    .hr-div-get{
         display: flex !important;
         justify-content: space-between !important;
-        margin-top: 220px !important;
+        margin-top: 250px !important;
     }
 
     .optional{
@@ -64,54 +162,895 @@
         text-align: center;
     }
 
+
+    .descript-div{
+        max-width: 444px !important;
+    }
+
+    span.red-ui-typedInput-type-label {
+    /* background: chartreuse; */
+    /* display: block; */
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    }
+
+    .btn-aln{
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        /* padding-left: 30px; */
+        align-content: center;
+        align-items: flex-end;
+    }
 </style>
 
 <script type="text/html" data-template-name="set_voltages">
-
-    <div class="form-row columm">
+    <div class="form-row columm descript-div">
         <strong class="descript">
             Program the value of the three charges that will be used.
         </strong>
     </div>
-    <div class="form-row columm">
+    <div style=" position: relative; display:flex;">
+        <div class="form-row columm-70">
+            <label style="width: 50% !important;" for="node-input-name" ><i class="fa fa-tag"></i> Identification Note</label>
+            <input type="text" id="node-input-name" placeholder="Name" style="width: 100%">
+        </div>
+        <div class="form-row columm-30" style="align-items: flex-end !important;">
+            <label style="width: max-content !important; padding-right: 24px;"><i class="fa fa-list-ul"></i> Item</label>
+            <div class="form-row btn-aln" >
+                <a id="addSetVoltages" class="red-ui-button" ><i class="fa fa-plus"></i></a>
+                <a id="remSetVoltages" class="red-ui-button" style="margin-right: 5px;" ><i class="fa fa-minus"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="form-row" style="display:flex; justify-content: space-between;">
+        <button  class="btn-uni btn-add"  type="button" id="addSetVoltages"> <i class="fa fa-plus" style="margin-right: 5px; font-size: 15px;"></i></button>
+        <button class="btn-uni btn-remove"   type="button" id="remSetVoltages"> <i class="fa fa-trash" style="margin-right: 10px; font-size: 15px;"></i></button>
+    </div> -->
+    <div class="hr-div-voltages">
+        <hr>
+        <span class="optional">Measure 0</span>
+        <hr>
+    </div>
+    <!-- <div class="form-row columm-30">
         <label  for="node-input-slot"><i class="fa fa-sliders"></i> Slot</label>
         <input type="number" id="node-input-slot" style="width:20%;">
-    </div>
+    </div> -->
     <div class="form-row columm">
-        <div class="form-row ">
-            <div>
-                <label for="node-input-phase_A" id="VA"><i class="fa fa-expand"></i></label>
+        <div style=" position: relative; display:flex;">
+            <div class="form-row columm-30" >
+                <div class="form-row ">
+                    <div>
+                        <label for="node-input-phase_A" id="VA"><i class="fa fa-expand"></i></label>
+                    </div>
+                    <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:100%;">
+                </div>
             </div>
-            <input type="number" step="any" min="0" max="300" id="node-input-phase_A" placeholder="phase_A" style="width:39%;">
+            <div class="form-row columm-30" style="padding-left:10px;">
+                <div class="form-row ">
+                    <div>
+                        <label for="node-input-phase_B" id="VB"><i class="fa fa-expand"></i></label>
+                    </div>
+                    <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:100%;">
+                </div>
+            </div>
+            <div class="form-row columm-30" style="padding-left:10px;">
+                <div class="form-row ">
+                    <div>
+                        <label for="node-input-phase_C" id="VC"><i class="fa fa-expand"></i></label>
+                    </div>
+                    <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:100%;">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-row columm">
-        <div class="form-row ">
-            <div>
-                <label for="node-input-phase_B" id="VB"><i class="fa fa-expand"></i></label>
-            </div>
-            <input type="number" step="any" min="0" max="300" id="node-input-phase_B" placeholder="phase_B" style="width:39%;">
-        </div>
-    </div>
-    <div class="form-row columm">
-        <div class="form-row ">
-            <div>
-                <label for="node-input-phase_C" id="VC"><i class="fa fa-expand"></i></label>
-            </div>
-            <input type="number" step="any" min="0" max="300" id="node-input-phase_C" placeholder="phase_C" style="width:39%;">
+        <div class="form-row columm-30">
+            <label  for="node-input-slot"><i class="fa fa-sliders"></i> Slot</label>
+            <input type="number" id="node-input-slot" style="width:100%;">
         </div>
     </div>
 
-    <div class="hr-div-voltages">
+    <div class="setVoltages1" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 1</span>
+            <hr>
+        </div>
+        <div style=" position: relative; display:flex;">
+            <div class="form-row columm-30">
+                <div class="form-row ">
+                    <div>
+                        <label for="node-input-phase_A1" id="VA1"><i class="fa fa-expand"></i></label>
+                    </div>
+                    <input type="number" step="any" min="0" max="300" id="node-input-phase_A1" placeholder="phase_A" style="width:100%;">
+                </div>
+            </div>
+            <div class="form-row columm-30" style="padding-left:10px;">
+                <div class="form-row ">
+                    <div>
+                        <label for="node-input-phase_B1" id="VB1"><i class="fa fa-expand"></i></label>
+                    </div>
+                    <input type="number" step="any" min="0" max="300" id="node-input-phase_B1" placeholder="phase_B" style="width:100%;">
+                </div>
+            </div>
+            <div class="form-row columm-30" style="padding-left:10px;">
+                <div class="form-row ">
+                    <div>
+                        <label for="node-input-phase_C1" id="VC1"><i class="fa fa-expand"></i></label>
+                    </div>
+                    <input type="number" step="any" min="0" max="300" id="node-input-phase_C1" placeholder="phase_C" style="width:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="setVoltages2" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 2</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A2" id="VA2"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A2" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B2" id="VB2"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B2" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C2" id="VC2"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C2" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages3" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 3</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A3" id="VA3"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A3" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B3" id="VB3"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B3" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C3" id="VC3"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C3" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages4" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 4</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A4" id="VA4"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A4" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B4" id="VB4"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B4" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C4" id="VC4"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C4" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages5" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 5</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A5" id="VA5"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A5" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B5" id="VB5"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B5" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C5" id="VC5"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C5" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages6" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 6</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A6" id="VA6"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A6" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B6" id="VB6"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B6" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C6" id="VC6"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C6" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages7" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 7</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A7" id="VA7"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A7" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B7" id="VB7"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B7" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C7" id="VC7"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C7" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages8" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 8</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A8" id="VA8"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A8" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B8" id="VB8"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B8" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C8" id="VC8"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C8" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages9" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 9</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_A9" id="VA9"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A9" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_B9" id="VB9"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B9" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30" style="padding-left:10px;">
+            <div class="form-row ">
+                <div>
+                    <label for="node-input-phase_C9" id="VC9"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C9" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages10" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 10</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A10" id="VA10"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A10" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B10" id="VB10"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B10" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C10" id="VC10"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C10" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages11" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 11</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A11" id="VA11"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A11" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B11" id="VB11"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B11" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C11" id="VC11"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C11" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages12" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 12</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A12" id="VA12"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A12" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B12" id="VB12"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B12" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C12" id="VC12"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C12" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages13" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 13</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A13" id="VA13"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A13" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B13" id="VB13"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B13" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C13" id="VC13"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C13" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages14" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 14</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A14" id="VA14"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A14" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B14" id="VB14"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B14" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C14" id="VC14"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C14" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages15" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 15</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A15" id="VA15"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A15" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B15" id="VB15"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B15" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C15" id="VC15"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C15" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages16" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 16</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A16" id="VA16"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A16" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B16" id="VB16"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B16" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C16" id="VC16"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C16" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages17" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 17</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A17" id="VA17"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A17" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B17" id="VB17"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B17" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C17" id="VC17"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C17" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages18" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 18</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A18" id="VA18"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A18" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B18" id="VB18"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B18" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C18" id="VC18"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C18" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages19" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 19</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A19" id="VA19"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A19" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B19" id="VB19"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B19" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C19" id="VC19"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C19" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages20" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 20</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A20" id="VA20"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A20" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B20" id="VB20"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B20" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C20" id="VC20"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C20" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages21" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 21</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A21" id="VA21"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A21" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B21" id="VB21"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B21" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C21" id="VC21"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C21" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages22" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 22</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A22" id="VA22"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A22" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B22" id="VB22"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B22" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C22" id="VC22"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C22" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages23" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 23</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A23" id="VA23"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A23" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B23" id="VB23"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B23" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C23" id="VC23"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C23" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="setVoltages24" style="display: none;">
+        <div class="hr-div-voltages">
+            <hr>
+            <span class="optional">Measure 24</span>
+            <hr>
+        </div>
+          <div style=" position: relative; display:flex;">
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_A24" id="VA24"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_A24" placeholder="phase_A" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_B24" id="VB24"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_B24" placeholder="phase_B" style="width:100%;">
+            </div>
+        </div>
+        <div class="form-row columm-30">
+        <div class="form-row " style="padding-left:10px;">
+                <div>
+                    <label for="node-input-phase_C24" id="VC24"><i class="fa fa-expand"></i></label>
+                </div>
+                <input type="number" step="any" min="0" max="300" id="node-input-phase_C24" placeholder="phase_C" style="width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- <div class="hr-div-voltages">
         <hr>
         <span class="optional">Optional</span>
         <hr>
     </div>
-
-    <div class="form-row columm">
+    <div class="form-row columm-30">
         <label style="width: 50% !important;" for="node-input-name" ><i class="fa fa-tag"></i> Component Nickname</label>
         <input type="text" id="node-input-name" placeholder="Name">
-    </div>
+    </div> -->
 </script>
 
 <script type="text/html" data-help-name="set_voltages">
